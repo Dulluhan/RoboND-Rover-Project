@@ -35,8 +35,23 @@ Refer to attached jupyter file.
 Refer to attached jupyter file
 ### Autonomous Navigation and Mapping
 
-#### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were.
+#### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were. 
 
-The purpose of the project was to design the perception and decision steps of the autonomous function
+The purpose of the project was to design the perception and decision steps of the autonomous function. In the case of designing the navigation algorithm, building off the provided template, my first thought was to use a FSM to control the rover due to the simplicity in logic. 
+
+For the construction of the FSM, by habit I started by creating two functions, one that implements the actions and one that switches the states. This was done by simply parsing the template to seperate the logic and the action. In the next step I immediately noticed a problem with the rover getting stuck, hence the addition of a new step 'Decongestion' that was in charge of freeing the robot. In most cases the actions carried out in that state are enough to fix the encountered problems. However, after the increase of velocity of the rover, the chances of the rover's belly getting stuck on a rock Xincreased, this there was no fix for other than to reset the simulator.
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
+
+
+
+
+
+
+
+
+
+
+
+
+.
