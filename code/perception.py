@@ -21,8 +21,8 @@ def color_thresh(img, rgb_thresh=(160, 160, 160)):
 def rover_coords(binary_img):
     # Identify nonzero pixels
     ypos, xpos = binary_img.nonzero()
-    # Calculate pixel positions with reference to the rover position being at the 
-    # center bottom of the image.  
+    # Calculate pixel positions with reference to the rover position being at the
+    # center bottom of the image.
     x_pixel = np.absolute(ypos - binary_img.shape[0]).astype(np.float)
     y_pixel = -(xpos - binary_img.shape[0]).astype(np.float)
     return x_pixel, y_pixel
@@ -30,7 +30,7 @@ def rover_coords(binary_img):
 
 # Define a function to convert to radial coords in rover space
 def to_polar_coords(x_pixel, y_pixel):
-    # Convert (x_pixel, y_pixel) to (distance, angle) 
+    # Convert (x_pixel, y_pixel) to (distance, angle)
     # in polar coordinates in rover space
     # Calculate distance to each pixel
     dist = np.sqrt(x_pixel**2 + y_pixel**2)
@@ -45,16 +45,16 @@ def rotate_pix(xpix, ypix, yaw):
     # Apply a rotation
     xpix_rotated = 0
     ypix_rotated = 0
-    # Return the result  
+    # Return the result
     return xpix_rotated, ypix_rotated
 
 # Define a function to perform a translation
-def translate_pix(xpix_rot, ypix_rot, xpos, ypos, scale): 
+def translate_pix(xpix_rot, ypix_rot, xpos, ypos, scale):
     # TODO:
     # Apply a scaling and a translation
     xpix_translated = 0
     ypix_translated = 0
-    # Return the result  
+    # Return the result
     return xpix_translated, ypix_translated
 
 # Define a function to apply rotation and translation (and clipping)
@@ -72,17 +72,17 @@ def pix_to_world(xpix, ypix, xpos, ypos, yaw, world_size, scale):
 
 # Define a function to perform a perspective transform
 def perspect_transform(img, src, dst):
-           
+
     M = cv2.getPerspectiveTransform(src, dst)
     warped = cv2.warpPerspective(img, M, (img.shape[1], img.shape[0]))# keep same size as input image
-    
+
     return warped
 
 
 # Apply the above functions in succession and update the Rover state accordingly
 def perception_step(Rover):
     # Perform perception steps to update Rover()
-    # TODO: 
+    # TODO:
     # NOTE: camera image is coming to you in Rover.img
     # 1) Define source and destination points for perspective transform
     # 2) Apply perspective transform
@@ -103,8 +103,8 @@ def perception_step(Rover):
     # Update Rover pixel distances and angles
         # Rover.nav_dists = rover_centric_pixel_distances
         # Rover.nav_angles = rover_centric_angles
-    
- 
-    
-    
-    return Rover
+
+
+
+
+    return Roverrf
